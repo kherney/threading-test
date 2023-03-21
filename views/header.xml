@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="header_test_form_view" model="ir.ui.view">
+            <field name="name">header_test.form</field>
+            <field name="model">header.test</field>
+            <field name="arch" type="xml">
+                <form string="Header">
+                    <header>
+                        <button name="post_button" string="Post" class="oe_highlight" states="draft" type="object"/>
+                        <button name="draft_button" string="Draft" class="oe_highlight" states="done" type="object"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Title"/>
+                            </h1>
+                        </div>
+                        <notebook>
+                            <page name="line_ids" string="Lines">
+                                <field name="line_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="price_unit"/>
+                                        <field name="amount_residual"/>
+                                        <field name="currency_id"/>
+                                        <field name="move_id"/>
+                                        <field name="partner_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="header_test_tree_view" model="ir.ui.view">
+            <field name="name">header.test.tree</field>
+            <field name="model">header.test</field>
+            <field name="arch" type="xml">
+                <tree string="Origin">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="dst_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="header_action" model="ir.actions.act_window">
+            <field name="name">Header</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">header.test</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Header" id="header_test" parent="account.menu_finance_receivables" action="header_action" sequence="200"/>
+
+    </data>
+</odoo>

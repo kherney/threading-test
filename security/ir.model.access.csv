@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_header,access_header,model_header_test,,1,1,1,1
+access_test_header,access_test_header,model_dest_header_test,,1,1,1,1
+access_test_line,access_test_line,model_line_test,,1,1,1,1
